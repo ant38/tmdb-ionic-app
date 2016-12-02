@@ -4,27 +4,23 @@
 (function (module) {
   'use strict';
 
-  function HomeController($scope, popupService, statesData) {
+  function HomeController($scope, statesService) {
     var controller = this;
+    
+    $scope.search = { query: '', results: []};
 
-    $scope.statesData = statesData;
-
-    $scope.from = 'homeController';
-
-    controller.showPopup = function () {
-      var scope = { from: $scope.from, title: 'Popup' };
-      popupService.open(module, 'smartphone/popup', scope);
+    controller.search = function() {
+      statesService.search().then(function($scope.search.query) {
+        console.log($scope.search.query);
+        $scope.search.results = $scope.search.query;
+      });
     };
-
-    controller.onLanguageChange = function (locale) {
-      console.debug(locale);
-    };
+    
   }
 
   module.controller('homeController', [
     '$scope',
-    'popupService',
-    'statesData',
+    'statesService',
     HomeController
   ]);
 
