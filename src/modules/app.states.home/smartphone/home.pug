@@ -11,8 +11,8 @@ ion-view.view-home(view-title="Home")
       ion-item(ng-if="!search.results.length")
         | Aucun résultat
       ion-item.item-icon-right(
-        ng-repeat="result in search.results",
-        ui-state-params={ id: result.id },
+        ng-repeat="result in search.results | orderBy:'-release_data'",
+        ui-state-params="{ id: result.id }",
         ui-state="STATE_DETAILS")
         | {{result.title}}
         i.icon.ion-chevron-right

@@ -20,7 +20,7 @@
         }
       },
     resolve: {
-      movieData: ['$stateParams', 'statesService', 'movieDataResolver']
+      movieData: ['$stateParams', 'statesService', movieDataResolver]
     }
     });
   }
